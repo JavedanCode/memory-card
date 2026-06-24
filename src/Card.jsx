@@ -1,6 +1,6 @@
 export default function Card({ pokemon, onClick }) {
   return (
-    <div className="card-wrapper" onClick={() => onClick(pokemon.id)}>
+    <div className="card-wrapper" onClick={onClick}>
       <img
         src={pokemon.sprites.other["official-artwork"].front_default}
         alt={pokemon.name}
