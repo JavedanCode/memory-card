@@ -1,12 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0b0f14;
+  color: white;
+  font-family: Inter, system-ui, sans-serif;
+}
+
 .game {
-  max-width: 1200px;
-  margin: 0 auto;
+  min-height: 100vh;
   padding: 2rem;
 }
 
 .game-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+}
+
+.game-header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.game-header p {
+  color: #b4b4b4;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.5;
 }
 
 .scoreboard {
@@ -15,8 +38,130 @@
   gap: 2rem;
 }
 
+.scoreboard h2 {
+  background: #161b22;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #252b36;
+}
+
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+}
+
+.card-wrapper {
+  position: relative;
+
+  height: 320px;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  background: linear-gradient(135deg, #ffe44dc9, #c5a30d);
+
+  border: 1px solid #2f2f2f;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-wrapper::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(241, 209, 26, 0.384) 0px,
+    rgba(255, 217, 0, 0.952) 12px,
+    transparent 12px,
+    transparent 24px
+  );
+
+  pointer-events: none;
+}
+
+.card-wrapper::after {
+  content: "";
+
+  position: absolute;
+
+  top: -100%;
+  left: -50%;
+
+  width: 60%;
+  height: 300%;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgb(215, 227, 235),
+    transparent
+  );
+
+  /*AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
+  transform: rotate(25deg);
+
+  animation: shine 5s linear infinite;
+
+  pointer-events: none;
+}
+
+@keyframes shine {
+  to {
+    left: 150%;
+  }
+}
+
+.card-wrapper:hover {
+  transform: translateY(-8px) scale(1.03);
+
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(255, 215, 0, 0.15);
+}
+
+.card-wrapper img {
+  width: 100%;
+  height: 240px;
+
+  object-fit: contain;
+
+  padding: 1rem;
+
+  z-index: 2;
+
+  position: relative;
+}
+
+.card-wrapper h2 {
+  position: relative;
+  z-index: 2;
+
+  background: #101010;
+
+  border-top: 1px solid #2b2b2b;
+
+  text-align: center;
+
+  padding: 1rem;
+
+  text-transform: capitalize;
+
+  letter-spacing: 1px;
+
+  font-size: 1rem;
+
+  font-weight: 700;
 }
