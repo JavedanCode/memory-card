@@ -18,13 +18,13 @@ Make sure you have the following installed:
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/pokemon-memory-game.git
+git clone https://github.com/javedancode/memory-game.git
 ```
 
 Navigate into the project directory:
 
 ```bash
-cd pokemon-memory-game
+cd memory-game
 ```
 
 Install dependencies:
