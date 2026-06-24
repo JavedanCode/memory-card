@@ -1,18 +1,78 @@
-# React + Vite
+# Pokémon Memory Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React-based memory card game built with the PokéAPI.
 
-Currently, two official plugins are available:
+The objective is simple: click each Pokémon card only once. After every successful click, the cards are shuffled. Clicking a Pokémon you've already selected resets your score. Try to remember every card and achieve the highest score possible.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Getting Started
 
-## React Compiler
+### Prerequisites
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Make sure you have the following installed:
 
-Note: This will impact Vite dev & build performances.
+- Node.js (v18 or newer recommended)
+- npm
 
-## Expanding the ESLint configuration
+### Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/pokemon-memory-game.git
+```
+
+Navigate into the project directory:
+
+```bash
+cd pokemon-memory-game
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open your browser and visit:
+
+```text
+http://localhost:5173
+```
+
+## Build for Production
+
+Create an optimized production build:
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## How to Play
+
+1. Click a Pokémon card to earn a point.
+2. After each click, the cards are shuffled.
+3. Do not click the same Pokémon twice.
+4. Clicking a previously selected Pokémon resets your current score.
+5. Try to click every Pokémon exactly once to win.
+
+## API
+
+This project uses the PokéAPI to retrieve Pokémon information and artwork.
+
+https://pokeapi.co/
+
+## License
+
+This project is open source and available under the MIT License.
