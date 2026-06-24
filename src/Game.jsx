@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
+import "./game.css";
 
 export default function Game() {
   const [deck, setDeck] = useState([]);
@@ -8,7 +9,9 @@ export default function Game() {
   const [clickedCards, setClickedCards] = useState([]);
 
   function shuffle(cards) {
-    setDeck(cards.sort(() => Math.random() - 0.4));
+    const shuffled = [...cards].sort(() => Math.random() - 0.5);
+
+    setDeck(shuffled);
   }
 
   function reset() {
@@ -16,21 +19,28 @@ export default function Game() {
     setClickedCards([]);
   }
 
-  function handleClick(pokemon) {
-    const isClicked = clickedCards.includes(pokemon);
-    if (isClicked) {
+  function handleClick(id) {
+    if (clickedCards.includes(id)) {
       reset();
-    } else {
-      setClickedCards([...clickedCards, pokemon]);
-      setScore(score + 1);
-      shuffle(cards);
-      if (score + 1 > bestScore) {
-        setBestScore(bestScore + 1);
-      }
-      if (clickedCards.length + 1 === cards.length) {
-        reset();
-      }
+      return;
     }
+
+    const newScore = score + 1;
+
+    setClickedCards([...clickedCards, id]);
+    setScore(newScore);
+
+    if (newScore > highScore) {
+      setHighScore(newScore);
+    }
+
+    if (newScore === deck.length) {
+      alert("You win!");
+      reset();
+      return;
+    }
+
+    shuffle(deck);
   }
 
   function getRandomIds() {
@@ -62,10 +72,30 @@ export default function Game() {
   }, []);
 
   return (
-    <div>
-      {deck.map((pokemon) => {
-        <Card key={pokemon.id} pokemon={pokemon}></Card>;
-      })}
+    <div className="game">
+      <header className="game-header">
+        <h1>Pokémon Memory Game</h1>
+
+        <p>
+          Click a Pokémon you haven't clicked before. Clicking the same Pokémon
+          twice resets your score.
+        </p>
+
+        <div className="scoreboard">
+          <h2>Score: {score}</h2>
+          <h2>Best Score: {highScore}</h2>
+        </div>
+      </header>
+
+      <div className="card-grid">
+        {deck.map((pokemon) => (
+          <Card
+            key={pokemon.id}
+            pokemon={pokemon}
+            onClick={() => handleClick(pokemon.id)}
+          />
+        ))}
+      </div>
     </div>
   );
 }
